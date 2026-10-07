@@ -1,0 +1,6 @@
+{
+  "name": "AuraFit AI - iOS Computer Vision Workout & Nutrition Coach",
+  "description": "Next-generation iOS fitness app tracking workout form and reps in real-time with computer vision, featuring personalized AI training splits and seamless dietary macro tracking.",
+  "requestFramePermissions": ["camera", "microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
