@@ -80,7 +80,7 @@ export const IOSContainer: React.FC<IOSContainerProps> = ({
       <div className="hidden md:flex items-center space-x-2 mb-4 bg-neutral-900/90 backdrop-blur-xl px-4 py-2 rounded-full border border-white/10 shadow-2xl text-xs z-50">
         <div className="flex items-center space-x-1.5 text-neutral-300 font-semibold">
           <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
-          <span className="capitalize font-bold tracking-tight text-white">znjy track</span>
+          <span className="font-bold tracking-tight text-white">znY Track</span>
         </div>
 
         <div className="h-3 w-px bg-white/20" />
@@ -228,7 +228,7 @@ export const IOSContainer: React.FC<IOSContainerProps> = ({
             setShowAboutModal(true);
           }}
           className="flex items-center space-x-1 text-fuchsia-400 hover:text-fuchsia-300 font-semibold px-2.5 py-1 rounded-full hover:bg-white/5 transition-all active:scale-95 border border-fuchsia-500/20"
-          title="About znjy track & Author @znjyee Instagram"
+          title="About znY Track & Author @znjyee Instagram"
         >
           <Instagram className="w-3.5 h-3.5 text-pink-400" />
           <span>About @znjyee</span>

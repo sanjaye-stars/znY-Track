@@ -239,8 +239,8 @@ export const CommunityChatView: React.FC<CommunityChatViewProps> = ({
       setIsSending(false);
     }
 
-    // AI Mention Trigger: If user tagged @coach or @znjy, generate automated AI coach feedback in the channel
-    if (textToSend.toLowerCase().includes('@coach') || textToSend.toLowerCase().includes('@znjy')) {
+    // AI Mention Trigger: If user tagged @coach, @zny or @znjy, generate automated AI coach feedback in the channel
+    if (textToSend.toLowerCase().includes('@coach') || textToSend.toLowerCase().includes('@zny') || textToSend.toLowerCase().includes('@znjy')) {
       setTimeout(async () => {
         try {
           const aiRes = await fetch('/api/coach/chat', {
@@ -260,7 +260,7 @@ export const CommunityChatView: React.FC<CommunityChatViewProps> = ({
               id: `bot_${Date.now()}`,
               channelId: activeChannel,
               userId: 'bot_znjy',
-              userName: 'znjy track AI Coach',
+              userName: 'znY Track AI Coach',
               userAvatar: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=150&q=80',
               userBadge: 'Official AI',
               text: aiData.reply,

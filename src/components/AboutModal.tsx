@@ -21,7 +21,7 @@ export const AboutModal: React.FC<AboutModalProps> = ({ isOpen, onClose }) => {
             </div>
             <div>
               <h2 className="text-base font-bold text-white tracking-tight flex items-center space-x-1.5">
-                <span>znjy track</span>
+                <span>znY Track</span>
                 <span className="text-[9px] bg-emerald-500/20 text-emerald-400 font-mono px-1.5 py-0.2 rounded font-bold border border-emerald-500/30">
                   PRO
                 </span>
@@ -74,7 +74,7 @@ export const AboutModal: React.FC<AboutModalProps> = ({ isOpen, onClose }) => {
                   <Award className="w-4 h-4 text-pink-400 fill-pink-400/20" />
                 </div>
                 <p className="text-[11px] text-neutral-300 mt-0.5">
-                  Author & Lead Engineer behind znjy track
+                  Author & Lead Engineer behind znY Track
                 </p>
                 <div className="flex items-center space-x-2 mt-1.5">
                   <a

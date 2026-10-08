@@ -48,7 +48,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
         id: 'usr_marcus',
         name: 'Marcus Chen',
         username: 'marcus_fit',
-        email: 'marcus.chen@znjy.app',
+        email: 'marcus.chen@znytrack.app',
         avatarUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80',
         isLoggedIn: true,
         joinDate: 'March 2024',
@@ -94,7 +94,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
             </div>
             <div>
               <h3 className="text-sm font-bold text-white">
-                {currentUser.isLoggedIn ? 'Account Profile' : 'znjy track Account'}
+                {currentUser.isLoggedIn ? 'Account Profile' : 'znY Track Account'}
               </h3>
               <p className="text-[10px] text-neutral-400">
                 {currentUser.isLoggedIn ? `@${currentUser.username}` : 'Sync Workouts, Macros & Community Chat'}
@@ -306,11 +306,11 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                 type="submit"
                 className="w-full bg-emerald-500 hover:bg-emerald-400 text-black py-2.5 rounded-2xl font-bold text-xs shadow-lg transition-all mt-2 active:scale-95"
               >
-                {mode === 'login' ? 'Sign In to znjy track' : 'Complete Registration'}
+                {mode === 'login' ? 'Sign In to znY Track' : 'Complete Registration'}
               </button>
 
               <div className="pt-2 text-center text-[10px] text-neutral-500 flex items-center justify-center space-x-1">
-                <span>znjy track developed by</span>
+                <span>znY Track developed by</span>
                 <a
                   href="https://instagram.com/znjyee"
                   target="_blank"

@@ -18,7 +18,7 @@ export const AICoachChat: React.FC<AICoachChatProps> = ({ userContext }) => {
     {
       id: '1',
       role: 'model',
-      content: `Hey! I'm znjy track AI, your personal biomechanics and sports nutrition coach. 🏋️‍♂️🥗\n\nI'm monitoring your logged workout sets, training volume, active calorie burn, and dietary macros in real time. Ask me to adjust your training volume, review joint mechanics, or optimize your post-workout meal timing!`,
+      content: `Hey! I'm znY Track AI, your personal biomechanics and sports nutrition coach. 🏋️‍♂️🥗\n\nI'm monitoring your logged workout sets, training volume, active calorie burn, and dietary macros in real time. Ask me to adjust your training volume, review joint mechanics, or optimize your post-workout meal timing!`,
       timestamp: '9:41 AM',
     },
   ]);
@@ -94,7 +94,7 @@ export const AICoachChat: React.FC<AICoachChatProps> = ({ userContext }) => {
             <Sparkles className="w-4 h-4" />
           </div>
           <div>
-            <h1 className="text-base font-bold text-white tracking-tight capitalize">znjy track AI Coach</h1>
+            <h1 className="text-base font-bold text-white tracking-tight capitalize">znY Track AI Coach</h1>
             <p className="text-[10px] text-emerald-400 flex items-center space-x-1">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
               <span>Grounded in Biomechanics & Sports Nutrition</span>

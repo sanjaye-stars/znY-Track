@@ -136,7 +136,7 @@ export default function App() {
 
   // Default Initial Training Plan
   const [trainingPlan, setTrainingPlan] = useState<TrainingPlan>({
-    planName: 'znjy track Kinetic Hypertrophy Split',
+    planName: 'znY Track Kinetic Hypertrophy Split',
     philosophy: 'Periodized high-tension training focused on tactile set tracking, full range-of-motion lifts, and progressive overload.',
     weeklyFrequency: 4,
     recommendedCalorieAdjustment: '+300 kcal moderate surplus with 1.8g/kg protein',

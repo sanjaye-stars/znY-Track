@@ -1,4 +1,4 @@
-// Internationalization (i18n) Engine for znjy track
+// Internationalization (i18n) Engine for znY Track
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
 export type LanguageCode = 'en' | 'es' | 'fr' | 'de' | 'ja' | 'ar' | 'hi' | 'pt' | 'zh';
@@ -34,7 +34,7 @@ export const translations: Record<LanguageCode, Record<string, string>> = {
     'nav.coach': 'AI Coach',
 
     // App Branding
-    'app.name': 'znjy track',
+    'app.name': 'znY Track',
     'app.subtitle': 'Tactile Workout Logger & Sports Nutrition',
 
     // Auth & Profile
@@ -83,7 +83,7 @@ export const translations: Record<LanguageCode, Record<string, string>> = {
     'dietary.aiScan': 'AI Scan Meal',
 
     // Community Chat
-    'chat.title': 'znjy Lifters Lounge',
+    'chat.title': 'znY Track Lifters Lounge',
     'chat.subtitle': 'Chat with fellow athletes & share logged sets',
     'chat.typePlaceholder': 'Message the lifters (type @coach to ask AI)...',
     'chat.send': 'Send',
@@ -103,7 +103,7 @@ export const translations: Record<LanguageCode, Record<string, string>> = {
     'nav.coach': 'Coach IA',
 
     // App Branding
-    'app.name': 'znjy track',
+    'app.name': 'znY Track',
     'app.subtitle': 'Registro Táctil de Entrenamientos y Nutrición',
 
     // Auth & Profile
@@ -152,7 +152,7 @@ export const translations: Record<LanguageCode, Record<string, string>> = {
     'dietary.aiScan': 'Escanear con IA',
 
     // Community Chat
-    'chat.title': 'Salón de Atletas znjy',
+    'chat.title': 'Salón de Atletas znY Track',
     'chat.subtitle': 'Chatea con otros atletas y comparte tus series',
     'chat.typePlaceholder': 'Escribe un mensaje (@coach para preguntar a la IA)...',
     'chat.send': 'Enviar',
@@ -172,7 +172,7 @@ export const translations: Record<LanguageCode, Record<string, string>> = {
     'nav.coach': 'Coach IA',
 
     // App Branding
-    'app.name': 'znjy track',
+    'app.name': 'znY Track',
     'app.subtitle': 'Enregistreur de Séances & Nutrition Sportive',
 
     // Auth & Profile
@@ -221,7 +221,7 @@ export const translations: Record<LanguageCode, Record<string, string>> = {
     'dietary.aiScan': 'Scanner avec l’IA',
 
     // Community Chat
-    'chat.title': 'Salon des Athlètes znjy',
+    'chat.title': 'Salon des Athlètes znY Track',
     'chat.subtitle': 'Échangez avec d’autres sportifs et partagez vos séries',
     'chat.typePlaceholder': 'Écrivez un message (tapez @coach pour l’IA)...',
     'chat.send': 'Envoyer',
@@ -241,7 +241,7 @@ export const translations: Record<LanguageCode, Record<string, string>> = {
     'nav.coach': 'KI-Coach',
 
     // App Branding
-    'app.name': 'znjy track',
+    'app.name': 'znY Track',
     'app.subtitle': 'Workout-Logger & Sporternährung',
 
     // Auth & Profile
@@ -290,7 +290,7 @@ export const translations: Record<LanguageCode, Record<string, string>> = {
     'dietary.aiScan': 'Mit KI scannen',
 
     // Community Chat
-    'chat.title': 'znjy Lifters Lounge',
+    'chat.title': 'znY Track Lifters Lounge',
     'chat.subtitle': 'Chatte mit Athleten & teile deine Sätze',
     'chat.typePlaceholder': 'Nachricht schreiben (@coach für KI)...',
     'chat.send': 'Senden',
@@ -310,7 +310,7 @@ export const translations: Record<LanguageCode, Record<string, string>> = {
     'nav.coach': 'AIコーチ',
 
     // App Branding
-    'app.name': 'znjy track',
+    'app.name': 'znY Track',
     'app.subtitle': 'ワークアウト記録＆スポーツ栄養学',
 
     // Auth & Profile
@@ -359,7 +359,7 @@ export const translations: Record<LanguageCode, Record<string, string>> = {
     'dietary.aiScan': 'AI写真スキャン',
 
     // Community Chat
-    'chat.title': 'znjy リフターズ・ラウンジ',
+    'chat.title': 'znY Track リフターズ・ラウンジ',
     'chat.subtitle': '仲間とチャットし、トレーニングセットを共有しよう',
     'chat.typePlaceholder': 'メッセージを入力 (@coach でAIに質問)...',
     'chat.send': '送信',
@@ -379,7 +379,7 @@ export const translations: Record<LanguageCode, Record<string, string>> = {
     'nav.coach': 'مدرب الذكاء الاصطناعي',
 
     // App Branding
-    'app.name': 'znjy track',
+    'app.name': 'znY Track',
     'app.subtitle': 'تسجيل التمارين والتغذية الرياضية',
 
     // Auth & Profile
@@ -428,7 +428,7 @@ export const translations: Record<LanguageCode, Record<string, string>> = {
     'dietary.aiScan': 'مسح الوجبة بالذكاء الاصطناعي',
 
     // Community Chat
-    'chat.title': 'صالة رياضيي znjy',
+    'chat.title': 'صالة رياضيي znY Track',
     'chat.subtitle': 'تحدث مع الرياضيين وشارك جولاتك التدريبية',
     'chat.typePlaceholder': 'اكتب رسالة (اكتب @coach لسؤال المدرب)...',
     'chat.send': 'إرسال',
@@ -448,7 +448,7 @@ export const translations: Record<LanguageCode, Record<string, string>> = {
     'nav.coach': 'AI कोच',
 
     // App Branding
-    'app.name': 'znjy track',
+    'app.name': 'znY Track',
     'app.subtitle': 'वर्कआउट लॉगर व पोषण कोच',
 
     // Auth & Profile
@@ -497,7 +497,7 @@ export const translations: Record<LanguageCode, Record<string, string>> = {
     'dietary.aiScan': 'AI से स्कैन करें',
 
     // Community Chat
-    'chat.title': 'znjy लिफ्टर्स लाउंज',
+    'chat.title': 'znY Track लिफ्टर्स लाउंज',
     'chat.subtitle': 'साथी एथलीट्स से बात करें और अपने सेट्स शेयर करें',
     'chat.typePlaceholder': 'संदेश लिखें (AI से पूछने के लिए @coach लिखें)...',
     'chat.send': 'भेजें',
@@ -517,7 +517,7 @@ export const translations: Record<LanguageCode, Record<string, string>> = {
     'nav.coach': 'Treinador IA',
 
     // App Branding
-    'app.name': 'znjy track',
+    'app.name': 'znY Track',
     'app.subtitle': 'Registro Tátil de Treinos e Nutrição',
 
     // Auth & Profile
@@ -566,7 +566,7 @@ export const translations: Record<LanguageCode, Record<string, string>> = {
     'dietary.aiScan': 'Escanear com IA',
 
     // Community Chat
-    'chat.title': 'Lounge dos Atletas znjy',
+    'chat.title': 'Lounge dos Atletas znY Track',
     'chat.subtitle': 'Converse com outros atletas e compartilhe séries',
     'chat.typePlaceholder': 'Digite uma mensagem (@coach para falar com a IA)...',
     'chat.send': 'Enviar',
@@ -586,7 +586,7 @@ export const translations: Record<LanguageCode, Record<string, string>> = {
     'nav.coach': 'AI教练',
 
     // App Branding
-    'app.name': 'znjy track',
+    'app.name': 'znY Track',
     'app.subtitle': '力量训练记录与运动营养',
 
     // Auth & Profile
@@ -635,7 +635,7 @@ export const translations: Record<LanguageCode, Record<string, string>> = {
     'dietary.aiScan': 'AI拍照辨识',
 
     // Community Chat
-    'chat.title': 'znjy 健身者交流大厅',
+    'chat.title': 'znY Track 健身者交流大厅',
     'chat.subtitle': '与其他运动员在线交流，分享训练记录组',
     'chat.typePlaceholder': '输入消息 (输入 @coach 向AI提问)...',
     'chat.send': '发送',
