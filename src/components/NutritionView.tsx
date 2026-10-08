@@ -340,7 +340,7 @@ export const NutritionView: React.FC<NutritionViewProps> = ({
           <div className="bg-neutral-950/80 p-2 rounded-xl border border-white/5">
             <span className="text-[10px] text-neutral-400 uppercase font-medium">Daily Calorie Target</span>
             <div className="flex items-baseline space-x-1.5 mt-0.5">
-              <span className="text-sm font-bold text-amber-300 font-mono">{adjustedCalorieTarget} kcal</span>
+              <span className="text-sm font-bold text-amber-300 font-mono">{adjustedCalorieBudget} kcal</span>
               <span className="text-[10px] text-neutral-400">({remainingCalories} kcal left)</span>
             </div>
           </div>

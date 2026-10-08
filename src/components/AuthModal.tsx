@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, Lock, Mail, User, Shield, CheckCircle2, LogOut, Sparkles, Award } from 'lucide-react';
+import { X, Lock, Mail, User, Shield, CheckCircle2, LogOut, Sparkles, Award, Instagram } from 'lucide-react';
 import { AuthUser } from '../types/auth';
 import { sounds } from '../utils/audioEffects';
 
@@ -170,6 +170,24 @@ export const AuthModal: React.FC<AuthModalProps> = ({
               <LogOut className="w-3.5 h-3.5" />
               <span>Sign Out</span>
             </button>
+
+            {/* Creator Credit */}
+            <div className="pt-2.5 mt-2 border-t border-white/5 flex items-center justify-between text-[11px] text-neutral-400">
+              <span className="flex items-center space-x-1">
+                <span>Created by</span>
+                <strong className="text-white">@znjyee</strong>
+              </span>
+              <a
+                href="https://instagram.com/znjyee"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => sounds.playTap()}
+                className="text-pink-400 hover:text-pink-300 font-bold flex items-center space-x-1"
+              >
+                <Instagram className="w-3 h-3" />
+                <span>Instagram</span>
+              </a>
+            </div>
           </div>
         ) : (
           /* Login / Signup Form */
@@ -290,6 +308,19 @@ export const AuthModal: React.FC<AuthModalProps> = ({
               >
                 {mode === 'login' ? 'Sign In to znjy track' : 'Complete Registration'}
               </button>
+
+              <div className="pt-2 text-center text-[10px] text-neutral-500 flex items-center justify-center space-x-1">
+                <span>znjy track developed by</span>
+                <a
+                  href="https://instagram.com/znjyee"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => sounds.playTap()}
+                  className="text-pink-400 hover:text-pink-300 font-bold"
+                >
+                  @znjyee
+                </a>
+              </div>
             </form>
           </div>
         )}

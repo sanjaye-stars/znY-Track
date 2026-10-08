@@ -13,7 +13,8 @@ import {
   ChevronRight,
   Sparkles,
   Dumbbell,
-  Target
+  Target,
+  Instagram
 } from 'lucide-react';
 import { WorkoutSession, CompletedSet, UserProfile, MealItem } from '../types/fitness';
 import { sounds } from '../utils/audioEffects';
@@ -563,6 +564,37 @@ export const ProgressView: React.FC<ProgressViewProps> = ({
             ))}
           </div>
         )}
+      </div>
+
+      {/* About & Creator Footer Card */}
+      <div className="mx-5 my-6 p-4 bg-gradient-to-r from-neutral-900 via-[#161224] to-[#12131e] border border-fuchsia-500/20 rounded-3xl shadow-lg">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center space-x-2.5">
+            <div className="w-9 h-9 rounded-2xl bg-gradient-to-tr from-yellow-500 via-pink-500 to-purple-600 p-[1.5px] shadow-sm">
+              <div className="w-full h-full bg-[#12131a] rounded-[14px] flex items-center justify-center">
+                <Instagram className="w-4 h-4 text-pink-400" />
+              </div>
+            </div>
+            <div>
+              <span className="text-[10px] uppercase font-mono font-bold text-fuchsia-400">App Creator</span>
+              <h4 className="text-xs font-bold text-white flex items-center space-x-1.5">
+                <span>@znjyee</span>
+                <span className="text-[9px] bg-pink-500/20 text-pink-300 px-1.5 py-0.2 rounded font-mono font-bold">
+                  Instagram
+                </span>
+              </h4>
+            </div>
+          </div>
+          <a
+            href="https://instagram.com/znjyee"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => sounds.playTap()}
+            className="bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-400 hover:to-purple-500 text-white font-bold text-[10px] px-3 py-1.5 rounded-xl shadow transition-all active:scale-95"
+          >
+            Follow @znjyee
+          </a>
+        </div>
       </div>
 
       {/* AI Progress Audit Modal */}

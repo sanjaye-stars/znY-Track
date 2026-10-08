@@ -102,6 +102,11 @@ class SoundFX {
     } catch {}
   }
 
+  // Boxing/Gym bell chime when a set completes
+  public playSetBell() {
+    this.playSuccessFanfare();
+  }
+
   // Celebratory sound when workout set or daily nutrition ring completes
   public playSuccessFanfare() {
     if (!this.soundEnabled) return;

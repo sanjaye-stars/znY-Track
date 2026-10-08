@@ -63,6 +63,39 @@ export const TrainingPlanView: React.FC<TrainingPlanViewProps> = ({
   const [auditLoading, setAuditLoading] = useState(false);
   const [auditData, setAuditData] = useState<AuditData | null>(null);
 
+  // Edit Exercise Target Sets & Reps Modal State
+  const [editingExercise, setEditingExercise] = useState<{ exercise: ExerciseItem; index: number } | null>(null);
+  const [editSets, setEditSets] = useState(3);
+  const [editReps, setEditReps] = useState('10-12');
+  const [editRpe, setEditRpe] = useState('8');
+
+  const handleOpenEditExercise = (exercise: ExerciseItem, index: number) => {
+    sounds.playTap();
+    setEditingExercise({ exercise, index });
+    setEditSets(exercise.targetSets);
+    setEditReps(exercise.targetReps);
+    setEditRpe(exercise.rpe);
+  };
+
+  const handleSaveEditedExercise = () => {
+    if (!editingExercise) return;
+    sounds.playTap();
+    const updatedDays = [...plan.days];
+    const currentExercises = [...activeDay.exercises];
+    currentExercises[editingExercise.index] = {
+      ...currentExercises[editingExercise.index],
+      targetSets: editSets,
+      targetReps: editReps.trim() || '8-10',
+      rpe: editRpe,
+    };
+    updatedDays[selectedDayIndex] = {
+      ...activeDay,
+      exercises: currentExercises,
+    };
+    onUpdatePlan({ ...plan, days: updatedDays });
+    setEditingExercise(null);
+  };
+
   // AI Architect Onboarding Form State
   const [goal, setGoal] = useState<string>('Hypertrophy & Muscle Gain');
   const [level, setLevel] = useState<string>('Intermediate');
@@ -321,9 +354,14 @@ export const TrainingPlanView: React.FC<TrainingPlanViewProps> = ({
                     </div>
 
                     <div className="flex flex-wrap items-center gap-2 mt-2">
-                      <span className="bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-[10px] font-bold px-2 py-0.5 rounded-md font-mono">
-                        {exercise.targetSets} SETS × {exercise.targetReps}
-                      </span>
+                      <button
+                        onClick={() => handleOpenEditExercise(exercise, idx)}
+                        className="bg-emerald-500/10 hover:bg-emerald-500/25 text-emerald-400 border border-emerald-500/30 text-[10px] font-bold px-2 py-0.5 rounded-md font-mono flex items-center space-x-1.5 transition-all active:scale-95 group/btn"
+                        title="Customize Sets & Reps for this exercise"
+                      >
+                        <span>{exercise.targetSets} SETS × {exercise.targetReps}</span>
+                        <Sliders className="w-2.5 h-2.5 text-emerald-400 group-hover/btn:scale-110 transition-transform" />
+                      </button>
                       <span className="bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 text-[10px] font-bold px-2 py-0.5 rounded-md font-mono">
                         RPE {exercise.rpe}
                       </span>
@@ -674,6 +712,175 @@ export const TrainingPlanView: React.FC<TrainingPlanViewProps> = ({
         isLoading={auditLoading}
         onReanalyze={handleRunPlanAudit}
       />
+
+      {/* Edit Programmed Exercise Sets & Reps Modal */}
+      {editingExercise && (
+        <div className="fixed inset-0 bg-black/85 backdrop-blur-xl z-50 flex items-center justify-center p-4">
+          <div className="bg-[#0f1118] border border-white/15 rounded-3xl p-5 max-w-sm w-full shadow-2xl relative animate-in fade-in zoom-in-95">
+            <div className="flex items-center justify-between pb-3 border-b border-white/10">
+              <div className="flex items-center space-x-2">
+                <div className="w-8 h-8 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center border border-emerald-500/30">
+                  <Sliders className="w-4 h-4" />
+                </div>
+                <div>
+                  <h3 className="text-sm font-bold text-white">Customize Sets & Reps</h3>
+                  <p className="text-[10px] text-neutral-400 font-mono truncate max-w-[200px]">
+                    {editingExercise.exercise.name}
+                  </p>
+                </div>
+              </div>
+              <button
+                onClick={() => setEditingExercise(null)}
+                className="text-neutral-400 hover:text-white p-1 rounded-lg"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+
+            <div className="my-4 space-y-4 text-xs">
+              {/* Sets Count Stepper & Presets */}
+              <div className="bg-neutral-900/90 p-3 rounded-2xl border border-white/5">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-[10px] font-bold text-neutral-400 uppercase tracking-wider">
+                    Target Sets Count
+                  </span>
+                  <span className="text-xs font-mono font-bold text-emerald-400">
+                    {editSets} Sets
+                  </span>
+                </div>
+
+                <div className="flex items-center justify-center space-x-4 my-2">
+                  <button
+                    onClick={() => {
+                      sounds.playTap();
+                      setEditSets((s) => Math.max(1, s - 1));
+                    }}
+                    className="w-9 h-9 rounded-xl bg-neutral-800 text-white font-bold hover:bg-neutral-700 active:scale-95 text-base border border-white/5"
+                  >
+                    -
+                  </button>
+                  <span className="text-2xl font-bold font-mono text-white min-w-[45px] text-center">
+                    {editSets}
+                  </span>
+                  <button
+                    onClick={() => {
+                      sounds.playTap();
+                      setEditSets((s) => Math.min(10, s + 1));
+                    }}
+                    className="w-9 h-9 rounded-xl bg-neutral-800 text-white font-bold hover:bg-neutral-700 active:scale-95 text-base border border-white/5"
+                  >
+                    +
+                  </button>
+                </div>
+
+                <div className="flex items-center justify-center space-x-1.5 pt-1">
+                  {[2, 3, 4, 5, 6].map((num) => (
+                    <button
+                      key={num}
+                      onClick={() => {
+                        sounds.playTap();
+                        setEditSets(num);
+                      }}
+                      className={`px-2.5 py-1 rounded-lg text-[10px] font-mono font-bold transition-all ${
+                        editSets === num
+                          ? 'bg-emerald-500 text-black shadow'
+                          : 'bg-neutral-800 text-neutral-300 hover:text-white'
+                      }`}
+                    >
+                      {num} Sets
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Reps Count / Range */}
+              <div className="bg-neutral-900/90 p-3 rounded-2xl border border-white/5">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-[10px] font-bold text-neutral-400 uppercase tracking-wider">
+                    Target Reps Count
+                  </span>
+                  <span className="text-xs font-mono font-bold text-emerald-400">
+                    {editReps} Reps
+                  </span>
+                </div>
+
+                <input
+                  type="text"
+                  value={editReps}
+                  onChange={(e) => setEditReps(e.target.value)}
+                  placeholder="e.g. 8-10 or 12"
+                  className="w-full bg-neutral-950 border border-white/10 rounded-xl px-3 py-2 text-white font-mono font-bold text-center text-sm focus:outline-none focus:border-emerald-500"
+                />
+
+                <div className="grid grid-cols-3 gap-1.5 mt-2">
+                  {['5', '6-8', '8-10', '10-12', '12-15', '15-20'].map((range) => (
+                    <button
+                      key={range}
+                      onClick={() => {
+                        sounds.playTap();
+                        setEditReps(range);
+                      }}
+                      className={`py-1 rounded-lg text-[10px] font-mono font-bold transition-all border ${
+                        editReps === range
+                          ? 'bg-emerald-500 text-black border-emerald-400 shadow'
+                          : 'bg-neutral-800 text-neutral-300 border-white/5 hover:text-white'
+                      }`}
+                    >
+                      {range} Reps
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Target RPE */}
+              <div className="bg-neutral-900/90 p-3 rounded-2xl border border-white/5">
+                <div className="flex items-center justify-between mb-1.5">
+                  <span className="text-[10px] font-bold text-neutral-400 uppercase tracking-wider">
+                    Target RPE
+                  </span>
+                  <span className="text-xs font-mono font-bold text-cyan-400">
+                    RPE {editRpe}
+                  </span>
+                </div>
+
+                <div className="flex items-center justify-around gap-1">
+                  {['7', '7.5', '8', '8.5', '9', '10'].map((rpe) => (
+                    <button
+                      key={rpe}
+                      onClick={() => {
+                        sounds.playTap();
+                        setEditRpe(rpe);
+                      }}
+                      className={`flex-1 py-1 rounded-lg text-[10px] font-mono font-bold transition-all border ${
+                        editRpe === rpe
+                          ? 'bg-cyan-500 text-black border-cyan-400 shadow'
+                          : 'bg-neutral-800 text-neutral-300 border-white/5 hover:text-white'
+                      }`}
+                    >
+                      {rpe}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div className="flex items-center space-x-2 pt-2">
+              <button
+                onClick={() => setEditingExercise(null)}
+                className="flex-1 bg-neutral-800 hover:bg-neutral-700 text-white font-bold py-2.5 rounded-2xl text-xs transition-all border border-white/5"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={handleSaveEditedExercise}
+                className="flex-1 bg-emerald-500 hover:bg-emerald-400 text-black font-bold py-2.5 rounded-2xl text-xs transition-all shadow-lg shadow-emerald-500/20 active:scale-95"
+              >
+                Save
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Muscular Anatomy Structure Modal */}
       {isAnatomyModalOpen && (

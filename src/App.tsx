@@ -6,7 +6,7 @@
 import React, { useState, useEffect } from 'react';
 import { IOSContainer } from './components/IOSContainer';
 import { TabType } from './components/IOSTabBar';
-import { ComputerVisionTracker } from './components/ComputerVisionTracker';
+import { WorkoutTrackerView } from './components/WorkoutTrackerView';
 import { TrainingPlanView } from './components/TrainingPlanView';
 import { NutritionView } from './components/NutritionView';
 import { ProgressView } from './components/ProgressView';
@@ -137,7 +137,7 @@ export default function App() {
   // Default Initial Training Plan
   const [trainingPlan, setTrainingPlan] = useState<TrainingPlan>({
     planName: 'znjy track Kinetic Hypertrophy Split',
-    philosophy: 'Periodized high-tension training focused on computer vision tracked full range-of-motion lifts and progressive overload.',
+    philosophy: 'Periodized high-tension training focused on tactile set tracking, full range-of-motion lifts, and progressive overload.',
     weeklyFrequency: 4,
     recommendedCalorieAdjustment: '+300 kcal moderate surplus with 1.8g/kg protein',
     days: [
@@ -265,7 +265,7 @@ export default function App() {
             cvExerciseType: 'bicep_curl',
             primaryMuscle: 'Biceps Brachii',
             coachingCue: 'Keep upper arms pinned to torso, rotate pinkies upward at peak.',
-            biomechanicNotes: 'Computer vision monitors elbow stability to prevent shoulder swing.'
+            biomechanicNotes: 'Strict elbow stability locks focus directly onto the biceps brachii, preventing shoulder swing.'
           }
         ]
       }
@@ -273,15 +273,15 @@ export default function App() {
     recoveryProtocol: 'Nightly 8 hours sleep, 10-minute post-workout dynamic hip opening, minimum 140g protein daily.'
   });
 
-  // Currently Selected Exercise for Computer Vision
-  const [currentExerciseForCV, setCurrentExerciseForCV] = useState<ExerciseItem | undefined>({
+  // Currently Selected Exercise for Workout Logger
+  const [currentExerciseForLogging, setCurrentExerciseForLogging] = useState<ExerciseItem | undefined>({
     id: 'ex_1',
     name: 'Barbell Back Squats',
     targetSets: 4,
     targetReps: '8-10',
     rpe: '8',
     restSeconds: 90,
-    cvTrackable: true,
+    cvTrackable: false,
     cvExerciseType: 'squat',
     primaryMuscle: 'Quadriceps & Glutes',
     coachingCue: 'Break at knees and hips together, maintain vertical torso posture.',
@@ -431,9 +431,9 @@ export default function App() {
     setWaterIntakeMl((prev) => Math.min(6000, prev + amountMl));
   };
 
-  // Handler: Select exercise from plan and switch to CV tab
-  const handleSelectExerciseForCV = (exercise: ExerciseItem) => {
-    setCurrentExerciseForCV(exercise);
+  // Handler: Select exercise from plan and switch to Workout tab
+  const handleSelectExerciseForLogging = (exercise: ExerciseItem) => {
+    setCurrentExerciseForLogging(exercise);
     setActiveTab('workout');
     setDynamicIslandState({
       mode: 'workout_tracking',
@@ -461,16 +461,16 @@ export default function App() {
         }}
       >
         {activeTab === 'workout' && (
-          <ComputerVisionTracker
+          <WorkoutTrackerView
             currentExercise={
-              currentExerciseForCV
+              currentExerciseForLogging
                 ? {
-                    name: currentExerciseForCV.name,
-                    type: currentExerciseForCV.cvExerciseType,
-                    targetReps: currentExerciseForCV.targetReps,
-                    rpe: currentExerciseForCV.rpe,
-                    targetSets: currentExerciseForCV.targetSets,
-                    restSeconds: currentExerciseForCV.restSeconds,
+                    name: currentExerciseForLogging.name,
+                    type: currentExerciseForLogging.cvExerciseType,
+                    targetReps: currentExerciseForLogging.targetReps,
+                    rpe: currentExerciseForLogging.rpe,
+                    targetSets: currentExerciseForLogging.targetSets,
+                    restSeconds: currentExerciseForLogging.restSeconds,
                   }
                 : undefined
             }
@@ -483,7 +483,8 @@ export default function App() {
           <TrainingPlanView
             plan={trainingPlan}
             onUpdatePlan={setTrainingPlan}
-            onSelectExerciseForCV={handleSelectExerciseForCV}
+            onSelectExerciseForLogging={handleSelectExerciseForLogging}
+            onSelectExerciseForCV={handleSelectExerciseForLogging}
           />
         )}
 

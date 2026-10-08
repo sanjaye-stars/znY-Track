@@ -535,12 +535,12 @@ Return ONLY valid JSON matching this schema:
             severity: 'Critical'
           },
           {
-            action: 'Do not progress weight load if computer vision form score drops below 85%',
+            action: 'Do not progress weight load if technique breaks down or reps become uncontrolled',
             risk: 'Encourages compensatory movement patterns that reinforce muscular imbalances.',
             severity: 'Warning'
           }
         ],
-        proCoachTip: 'Consistency in range of motion beats ego-lifting every single time. Let computer vision guide your genuine depth.'
+        proCoachTip: 'Consistency in range of motion and progressive overload beats ego-lifting every single time.'
       }
     });
   }
@@ -554,14 +554,15 @@ app.post('/api/coach/chat', async (req, res) => {
     const { messages, userContext } = req.body;
 
     const systemPrompt = `
-You are znjy track AI, an elite personal trainer, biomechanist, and sports dietitian embedded inside an iOS app.
+You are znjy track AI, an elite personal trainer, biomechanist, and sports dietitian embedded inside znjy track, created by author @znjyee (Instagram: @znjyee).
 User Context:
 ${JSON.stringify(userContext || {})}
 
 Guidelines:
 - Give concise, motivating, science-grounded responses formatted with bullet points or bold text where appropriate.
-- Seamlessly connect workout strain, computer vision form metrics, and dietary macronutrients.
+- Seamlessly connect workout sets, training volume, progressive overload, and dietary macronutrients.
 - Keep answers punchy and tailored for quick mobile reading (under 120 words unless requested in depth).
+- If the user asks who made or authored this app, proudly credit author @znjyee on Instagram (@znjyee).
 `;
 
     const chatMessages = (messages || []).map((m: any) => ({

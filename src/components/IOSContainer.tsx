@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Smartphone, Monitor, Sparkles, Info, X, Check, Cpu, Zap, RotateCcw, Lightbulb, Globe, User, LogIn } from 'lucide-react';
+import { Smartphone, Monitor, Sparkles, Info, X, Check, Cpu, Zap, RotateCcw, Lightbulb, Globe, User, LogIn, Instagram } from 'lucide-react';
 import { DynamicIsland } from './DynamicIsland';
 import { IOSStatusBar } from './IOSStatusBar';
 import { IOSTabBar, TabType } from './IOSTabBar';
@@ -8,6 +8,7 @@ import { AuthUser } from '../types/auth';
 import { sounds } from '../utils/audioEffects';
 import { useTranslation } from '../utils/i18n';
 import { NothingGlyphBack } from './NothingGlyphBack';
+import { AboutModal } from './AboutModal';
 
 export type MobileDeviceModel =
   | 'iphone_13_promax'
@@ -43,6 +44,7 @@ export const IOSContainer: React.FC<IOSContainerProps> = ({
   const { currentOption } = useTranslation();
   const [deviceModel, setDeviceModel] = useState<MobileDeviceModel>('iphone_13_promax');
   const [showCompatibilityModal, setShowCompatibilityModal] = useState(false);
+  const [showAboutModal, setShowAboutModal] = useState(false);
   const [isNothingBackView, setIsNothingBackView] = useState(false);
   const [ambientGlyphLit, setAmbientGlyphLit] = useState(true);
 
@@ -215,6 +217,21 @@ export const IOSContainer: React.FC<IOSContainerProps> = ({
         >
           <Info className="w-3.5 h-3.5" />
           <span>Device Specs</span>
+        </button>
+
+        <div className="h-3 w-px bg-white/20" />
+
+        {/* About & Author (@znjyee) Button */}
+        <button
+          onClick={() => {
+            sounds.playTap();
+            setShowAboutModal(true);
+          }}
+          className="flex items-center space-x-1 text-fuchsia-400 hover:text-fuchsia-300 font-semibold px-2.5 py-1 rounded-full hover:bg-white/5 transition-all active:scale-95 border border-fuchsia-500/20"
+          title="About znjy track & Author @znjyee Instagram"
+        >
+          <Instagram className="w-3.5 h-3.5 text-pink-400" />
+          <span>About @znjyee</span>
         </button>
 
         <div className="h-3 w-px bg-white/20" />
@@ -481,6 +498,29 @@ export const IOSContainer: React.FC<IOSContainerProps> = ({
                   </div>
                 </div>
               </div>
+              {/* Author & Creator Credit */}
+              <div className="bg-gradient-to-r from-fuchsia-950/40 to-pink-950/30 border border-fuchsia-500/30 p-3 rounded-2xl flex items-center justify-between">
+                <div className="flex items-center space-x-2.5">
+                  <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-yellow-500 via-pink-500 to-purple-600 p-[1.5px] shadow-sm">
+                    <div className="w-full h-full bg-[#12131a] rounded-[10px] flex items-center justify-center">
+                      <Instagram className="w-4 h-4 text-pink-400" />
+                    </div>
+                  </div>
+                  <div>
+                    <span className="text-[10px] text-fuchsia-400 uppercase font-mono font-bold">Created by</span>
+                    <h4 className="text-xs font-bold text-white">@znjyee</h4>
+                  </div>
+                </div>
+                <a
+                  href="https://instagram.com/znjyee"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => sounds.playTap()}
+                  className="bg-fuchsia-500 hover:bg-fuchsia-400 text-black font-bold text-[10px] px-2.5 py-1 rounded-xl transition-all"
+                >
+                  Instagram
+                </a>
+              </div>
             </div>
 
             <button
@@ -492,6 +532,12 @@ export const IOSContainer: React.FC<IOSContainerProps> = ({
           </div>
         </div>
       )}
+
+      {/* Dedicated About & Author Modal */}
+      <AboutModal
+        isOpen={showAboutModal}
+        onClose={() => setShowAboutModal(false)}
+      />
     </div>
   );
 };
